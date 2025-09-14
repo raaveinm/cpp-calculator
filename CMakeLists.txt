@@ -3,7 +3,9 @@ project(untitled)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(untitled main.cpp
-        string_utils.cpp
-        string_utils.h
-        numeric.h)
+add_executable(
+        untitled
+        main.cpp
+        calculator.cpp
+        calculator.h
+)

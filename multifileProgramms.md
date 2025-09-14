@@ -25,3 +25,79 @@ inline bool IsEven(int n) {
 
 Важно, чтобы все определения inline-функции в программе были одинаковыми. Если нарушить это правило, программа
 может собраться без ошибок и начать вести себя непредсказуемо. Это называется неопределённым поведением.
+
+```c++
+
+
+int main() {
+
+    double currentValue = 0.0;
+    if (!(std::cin >> currentValue)) {
+        std::cerr << "Error: Numeric operand expected" << std::endl;
+        return -1;
+    }
+
+    std::string command;
+
+    while (std::cin >> command) {
+        if (command.empty()) {
+            std::cerr << "Error: Numeric operand expected\n";
+            return -1;
+        }
+
+        if (command == "+") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue += operand;
+        } else if (command == "q") {
+            return 0;
+        } else if (command == "-") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue -= operand;
+        } else if (command == "*") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue *= operand;
+        } else if (command == "/") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue /= operand;
+        } else if (command == "**") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue = std::pow(currentValue, operand);
+        } else if (command == "=") {
+            std::cout << currentValue << std::endl;
+        } else if (command == "c") {
+            currentValue = 0.0;
+        } else if (command == ":") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue = operand;
+        } else {
+            std::cerr << "Error: Unknown token " << command << std::endl;
+            return -2;
+        }
+    }
+    return 0;
+}
+```
