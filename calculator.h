@@ -5,18 +5,34 @@
 #ifndef CALCULATOR_H
 #define CALCULATOR_H
 
+#include <iostream>
+#include <string>
+#include <cmath>
+
 using Number = double;
 
-class Calculator{
+class Calculator {
 public:
     static bool RunCalculatorCycle();
-    static Number GetSavedNumber() { return saved_number; } // Dear reviewer its singleton :3
-    static void SetSavedNumber(const Number &value) { saved_number = value;  }
+    void Add(Number right);
+    void Set(Number number);
+    void Sub(Number right);
+    void Mul(Number right);
+    void Div(Number right);
+    void Pow(Number right);
+    void Save();
+    void Load();
+    [[nodiscard]] bool HasMem() const;
+    [[nodiscard]] std::string GetNumberRepr() const;
+    [[nodiscard]] Number GetNumber() const;
+
 private:
-    static bool is_set;
-    static Number saved_number;
-    bool ReadNumber(const Number& result);
-    static bool IsInitialCommandCorrect(Number& currentValue);
+    bool is_saved_ = false;
+    bool is_init_ = false;
+    Number current_res_ = 0.0;
+    Number saved_number_ = 0.0;
+
+    static bool ReadNumber(Number &result);
 };
 
 
