@@ -1,0 +1,103 @@
+## Headers
+Многократное подключение заголовочного файла в одной единице трансляции бесполезно, а в ряде случаев может
+привести к ошибкам компиляции. Чтобы защититься от этого, в начале заголовочного файла пишут директиву `#pragma once`.
+С ней, сколько бы раз вы ни подключали хидер, последующие включения будут проигнорированы.
+
+### inline
+Некоторые многократно используемые функции бывают совсем маленькими, буквально несколько строк. 
+Разделять их на объявление и определение может быть неудобно.
+C++ позволяет упростить описание таких функций, сделав их встраиваемыми (`inline`). 
+
+```c++
+// Файл a.h
+#pragma once
+
+// Это встраиваемая (inline) функция.
+inline bool IsEven(int n) {
+    return n % 2 == 0;
+}
+```
+
+Каждый объектный файл, где использовалась inline-функция, будет содержать её определение. В случае с обычными
+функциями определение каждой из них содержится в единственном экземпляре. Поэтому суммарный объём объектных
+файлов увеличится. Также увеличится и время компоновки программы, так как ему нужно будет обработать больший
+объём данных. 
+
+Важно, чтобы все определения inline-функции в программе были одинаковыми. Если нарушить это правило, программа
+может собраться без ошибок и начать вести себя непредсказуемо. Это называется неопределённым поведением.
+
+```c++
+
+
+int main() {
+
+    double currentValue = 0.0;
+    if (!(std::cin >> currentValue)) {
+        std::cerr << "Error: Numeric operand expected" << std::endl;
+        return -1;
+    }
+
+    std::string command;
+
+    while (std::cin >> command) {
+        if (command.empty()) {
+            std::cerr << "Error: Numeric operand expected\n";
+            return -1;
+        }
+
+        if (command == "+") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue += operand;
+        } else if (command == "q") {
+            return 0;
+        } else if (command == "-") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue -= operand;
+        } else if (command == "*") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue *= operand;
+        } else if (command == "/") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue /= operand;
+        } else if (command == "**") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue = std::pow(currentValue, operand);
+        } else if (command == "=") {
+            std::cout << currentValue << std::endl;
+        } else if (command == "c") {
+            currentValue = 0.0;
+        } else if (command == ":") {
+            double operand;
+            if (!(std::cin >> operand)) {
+                std::cerr << "Error: Numeric operand expected" << std::endl;
+                return -1;
+            }
+            currentValue = operand;
+        } else {
+            std::cerr << "Error: Unknown token " << command << std::endl;
+            return -2;
+        }
+    }
+    return 0;
+}
+```
