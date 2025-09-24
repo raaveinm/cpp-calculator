@@ -8,4 +8,6 @@ add_executable(
         main.cpp
         calculator.cpp
         calculator.h
+        calculator_ui.cpp
+        calculator_ui.h
 )

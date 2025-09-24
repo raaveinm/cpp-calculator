@@ -37,58 +37,6 @@ bool Calculator::RunCalculatorCycle() {
     calc.Set(init_number);
 
     std::string token;
-    while(std::cin >> token) {
-        Number right;
-        if (token == "+"s) {
-            if (!ReadNumber(right)) {
-                break;
-            }
-            calc.Add(right);
-        } else if (token == "-"s) {
-            if (!ReadNumber(right)) {
-                break;
-            }
-            calc.Sub(right);
-        } else if (token == "*"s) {
-            if (!ReadNumber(right)) {
-                break;
-            }
-            calc.Mul(right);
-        } else if (token == "/"s) {
-            if (!ReadNumber(right)) {
-                break;
-            }
-            calc.Div(right);
-        } else if (token == "**"s) {
-            if (!ReadNumber(right)) {
-                break;
-            }
-            calc.Pow(right);
-        } else if (token == "s"s) {
-            calc.Save();
-        } else if (token == "l"s) {
-            if (!calc.HasMem()) {
-                std::cerr << "Error: Memory is empty"s << std::endl;
-                break;
-            }
-            calc.Load();
-        } else if (token == "="s) {
-            std::cout << calc.GetNumberRepr() << std::endl;
-        } else if (token == "c"s) {
-            calc.Set(0);
-        } else if (token == "n"s) {
-            calc.Set(-calc.GetNumber());
-        } else if (token == ":"s) {
-            if (!ReadNumber(right)) {
-                break;
-            }
-            calc.Set(right);
-        } else if (token == "q"s) {
-            return true;
-        } else {
-            std::cerr << "Error: Unknown token "s << token << std::endl;
-            break;
-        }
-    }
+
     return false;
 }
