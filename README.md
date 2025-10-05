@@ -2,4 +2,4 @@
 
 ---
 
-*Final project of Yandex practicum - sprint#1*
+*Final project of Yandex practicum - sprint#2*
