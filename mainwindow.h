@@ -27,25 +27,6 @@ public:
     MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
 
-    void SetText(const QString& text);
-
-    inline void AddText(const QString& suffix){
-        input_number_ += suffix;
-        SetText(input_number_);
-    }
-
-    void SetOperation(Operation op);
-
-    inline QString OpToString(Operation op) {
-        switch(op) {
-        case Operation::NO_OPERATION: return "";
-        case Operation::ADDITION: return "+";
-        case Operation::DIVISION: return "÷";
-        case Operation::MULTIPLICATION: return "×";
-        case Operation::SUBTRACTION: return "−";
-        case Operation::POWER: return "^";
-        }
-    }
 
 private slots:
 
@@ -95,6 +76,7 @@ private slots:
 
     void on_bt_mr_clicked();
 
+
 private:
     Ui::MainWindow* ui;
     Calculator calculator_;
@@ -103,6 +85,28 @@ private:
     bool is_saved_ = false;
     double saved_number_;
     Operation current_operation_ = Operation::NO_OPERATION;
+
     QString NormalizeNumber(const QString &text);
+
     QString RemoveTrailingZeroes(const QString &text);
+
+    void SetText(const QString& text);
+
+    inline void AddText(const QString& suffix){
+        input_number_ += suffix;
+        SetText(input_number_);
+    }
+
+    void SetOperation(Operation op);
+
+    inline QString OpToString(Operation op) {
+        switch(op) {
+        case Operation::NO_OPERATION: return "";
+        case Operation::ADDITION: return "+";
+        case Operation::DIVISION: return "÷";
+        case Operation::MULTIPLICATION: return "×";
+        case Operation::SUBTRACTION: return "−";
+        case Operation::POWER: return "^";
+        }
+    }
 };

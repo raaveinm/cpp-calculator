@@ -134,8 +134,18 @@ void MainWindow::on_btn_dot_clicked()
 
 void MainWindow::on_btn_plus_minus_clicked()
 {
-    input_number_ = input_number_.startsWith("-")? input_number_.mid(1) : "-" + input_number_;
-    SetText(input_number_);
+    // input_number_ = input_number_.startsWith("-")? input_number_.mid(1) : "-" + input_number_;
+    // SetText(input_number_);
+
+    if (input_number_.isEmpty()) {
+        active_number_ *= -1;
+        input_number_ = QString::number(active_number_);
+        ui->l_result->setText(input_number_);
+    } else {
+        input_number_ = input_number_.startsWith("-")? input_number_.mid(1) : "-" + input_number_;
+        SetText(input_number_);
+    }
+
 }
 
 
