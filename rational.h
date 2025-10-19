@@ -20,24 +20,16 @@ public:
     Rational& operator=(const Rational& r) = default;
 
     inline Rational operator+(const Rational& r) const {
-        const int new_numerator = numerator_ * r.GetDenominator() + denominator_ * r.GetNumerator();
-        const int new_denominator = denominator_ * r.GetDenominator();
-        return {new_numerator, new_denominator};
+        return Rational(*this) += r;
     }
     inline Rational operator-(const Rational& r) const {
-        int new_numerator = numerator_ * r.GetDenominator() - denominator_ * r.GetNumerator();
-        int new_denominator = denominator_ * r.GetDenominator();
-        return {new_numerator, new_denominator};
+        return Rational(*this) -= r;
     }
     inline Rational operator*(const Rational& r) const {
-        int new_numerator = numerator_ * r.GetNumerator();
-        int new_denominator = denominator_ * r.GetDenominator();
-        return {new_numerator, new_denominator};
+        return Rational(*this) *= r;
     }
     inline Rational operator/(const Rational& r) const {
-        const int new_numerator = numerator_ * r.GetDenominator();
-        int new_denominator = denominator_ * r.GetNumerator();
-        return {new_numerator, new_denominator};
+        return Rational(*this) /= r;
     }
 
     Rational operator+=(const Rational& r) {

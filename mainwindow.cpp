@@ -73,31 +73,124 @@ void MainWindow::SetControllerCallback(std::function<void(ControllerType control
     controller_callback_ = std::move(cb);
 }
 
-void MainWindow::on_btn_1_clicked() { if (digit_callback_) digit_callback_(1); }
-void MainWindow::on_btn_2_clicked() { if (digit_callback_) digit_callback_(2); }
-void MainWindow::on_btn_3_clicked() { if (digit_callback_) digit_callback_(3); }
-void MainWindow::on_btn_4_clicked() { if (digit_callback_) digit_callback_(4); }
-void MainWindow::on_btn_5_clicked() { if (digit_callback_) digit_callback_(5); }
-void MainWindow::on_btn_6_clicked() { if (digit_callback_) digit_callback_(6); }
-void MainWindow::on_btn_7_clicked() { if (digit_callback_) digit_callback_(7); }
-void MainWindow::on_btn_8_clicked() { if (digit_callback_) digit_callback_(8); }
-void MainWindow::on_btn_9_clicked() { if (digit_callback_) digit_callback_(9); }
-void MainWindow::on_btn_0_clicked() { if (digit_callback_) digit_callback_(0); }
+// У нас так по ООП преподаватель писал >~<
+// void MainWindow::on_btn_8_clicked() { if (digit_callback_) digit_callback_(8); }
 
-void MainWindow::on_btn_in_pow_clicked() { if (operation_callback_) operation_callback_(Operation::POWER); }
-void MainWindow::on_btn_division_clicked() { if (operation_callback_) operation_callback_(Operation::DIVISION); }
-void MainWindow::on_btn_multiply_clicked() { if (operation_callback_) operation_callback_(Operation::MULTIPLICATION); }
-void MainWindow::on_btn_subtract_clicked() { if (operation_callback_) operation_callback_(Operation::SUBTRACTION); }
-void MainWindow::on_btn_addition_clicked() { if (operation_callback_) operation_callback_(Operation::ADDITION); }
+void MainWindow::on_btn_1_clicked() {
+    if (digit_callback_) {
+        digit_callback_(1);
+    }
+}
+void MainWindow::on_btn_2_clicked() {
+    if (digit_callback_) {
+        digit_callback_(2);
+    }
+}
+void MainWindow::on_btn_3_clicked() {
+    if (digit_callback_) {
+        digit_callback_(3);
+    }
+}
+void MainWindow::on_btn_4_clicked() {
+    if (digit_callback_) {
+        digit_callback_(4);
+    }
+}
+void MainWindow::on_btn_5_clicked() {
+    if (digit_callback_) {
+        digit_callback_(5);
+    }
+}
+void MainWindow::on_btn_6_clicked() {
+    if (digit_callback_) {
+        digit_callback_(6);
+    }
+}
+void MainWindow::on_btn_7_clicked() {
+    if (digit_callback_) {
+        digit_callback_(7);
+    }
+}
+void MainWindow::on_btn_8_clicked() {
+    if (digit_callback_) {
+        digit_callback_(8);
+    }
+}
+void MainWindow::on_btn_9_clicked() { if (digit_callback_) {
+        digit_callback_(9);
+    }
+}
+void MainWindow::on_btn_0_clicked() { if (digit_callback_) {
+        digit_callback_(0);
+    }
+}
 
-void MainWindow::on_btn_erase_clicked() { if (control_callback_) control_callback_(ControlKey::BACKSPACE); }
-void MainWindow::on_btn_plus_minus_clicked() { if (control_callback_) control_callback_(ControlKey::PLUS_MINUS); }
-void MainWindow::on_btn_res_clicked() { if (control_callback_) control_callback_(ControlKey::EQUALS); }
-void MainWindow::on_btn_clear_clicked() { if (control_callback_) control_callback_(ControlKey::CLEAR); }
-void MainWindow::on_btn_ms_clicked() { if (control_callback_) control_callback_(ControlKey::MEM_SAVE); }
-void MainWindow::on_btn_mc_clicked() { if (control_callback_) control_callback_(ControlKey::MEM_CLEAR); }
-void MainWindow::on_bt_mr_clicked() { if (control_callback_) control_callback_(ControlKey::MEM_LOAD); }
-void MainWindow::on_tb_extra_clicked() { if (control_callback_) control_callback_(ControlKey::EXTRA_KEY); }
+void MainWindow::on_btn_in_pow_clicked() {
+    if (operation_callback_) {
+        operation_callback_(Operation::POWER);
+    }
+}
+void MainWindow::on_btn_division_clicked() {
+    if (operation_callback_) {
+        operation_callback_(Operation::DIVISION);
+    }
+}
+void MainWindow::on_btn_multiply_clicked() {
+    if (operation_callback_) {
+        operation_callback_(Operation::MULTIPLICATION);
+    }
+}
+void MainWindow::on_btn_subtract_clicked() {
+    if (operation_callback_) {
+        operation_callback_(Operation::SUBTRACTION);
+    }
+}
+void MainWindow::on_btn_addition_clicked() {
+    if (operation_callback_) {
+        operation_callback_(Operation::ADDITION);
+    }
+}
+
+void MainWindow::on_btn_erase_clicked() {
+    if (control_callback_) {
+        control_callback_(ControlKey::BACKSPACE);
+    }
+}
+void MainWindow::on_btn_plus_minus_clicked() {
+    if (control_callback_) {
+        control_callback_(ControlKey::PLUS_MINUS);
+    }
+}
+void MainWindow::on_btn_res_clicked() {
+    if (control_callback_) {
+        control_callback_(ControlKey::EQUALS);
+    }
+}
+void MainWindow::on_btn_clear_clicked() {
+    if (control_callback_) {
+        control_callback_(ControlKey::CLEAR);
+    }
+}
+void MainWindow::on_btn_ms_clicked() {
+    if (control_callback_) {
+        control_callback_(ControlKey::MEM_SAVE);
+    }
+}
+void MainWindow::on_btn_mc_clicked() {
+    if (control_callback_) {
+        control_callback_(ControlKey::MEM_CLEAR);
+    }
+}
+void MainWindow::on_bt_mr_clicked() {
+    if (control_callback_) {
+        control_callback_(ControlKey::MEM_LOAD);
+    }
+}
+void MainWindow::on_tb_extra_clicked() {
+    if (control_callback_) {
+        control_callback_(ControlKey::EXTRA_KEY);
+    }
+}
 
 void MainWindow::on_cmb_controller_currentIndexChanged(int index) {
     if (controller_callback_) {
